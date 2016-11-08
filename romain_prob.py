@@ -140,10 +140,9 @@ okay = [x.append(0) for x in new]
 
 for conference in conferences.keys():
     for a in conferences[conference]['attendees']:
-        new[a][2] += (get_distance(star_coordinates[attendees[a][1]], 
-                                         star_coordinates[conference]))
+        new[a][2] += (get_distance(star_coordinates[attendees[a][1]],
+                                         star_coordinates[conference]) * 2)
 
-okay = [x.sort() for x in new]
-new.sort()
+new = sorted(new, key=lambda x: x[2])
 
-print "Winner: {} (traveled {:.2f} light years)".format(new[-1][1], new[-1][0])
+print "Winner: {} (traveled {:.2f} light years)".format(new[-1][0], new[-1][2])
